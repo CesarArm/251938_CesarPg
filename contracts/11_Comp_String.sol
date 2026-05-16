@@ -2,7 +2,7 @@
 pragma solidity >=0.8.2 <0.9.0;
 
 contract Complejos {
-    string private saludo = "Hola";
+    string private saludo = "Hola  ";
 
     function cambiarSaludo(string memory texto) public {
         saludo = texto;
@@ -10,5 +10,9 @@ contract Complejos {
 
     function saludar() public view returns (string memory) {
         return saludo;
+    }
+
+    function concatSaludo(string memory texto) public {
+        saludo = string.concat(saludo, texto);
     }
 }
