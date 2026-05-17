@@ -34,8 +34,28 @@ contract Hospital251938 {
         registros.push(Paciente(_id, _nombre, _edad, _estado));
     }
 
-    function contarElementos() public view returns (uint256) {
-        console.log("Ejecutado por: 251938 - Cesar Armando Pinillos Gomez");
+    function contarElementos() public view mostrarConsola returns (uint256) {
         return registros.length;
+    }
+
+    function inactivarElemento(uint256 _posicion) public mostrarConsola {
+        require(_posicion < registros.length, "Posicion fuera de rango");
+        registros[_posicion].estado = false;
+    }
+
+    function pintarElementosActivos() public view mostrarConsola {
+        for (uint256 i = 0; i < registros.length; i++) {
+            if (registros[i].estado == true) {
+                console.log("Mascota activa:", registros[i].id, registros[i].nombre);
+            }
+        }
+    }
+
+    function pintarElementosImpares() public view mostrarConsola {
+        for (uint256 i = 0; i < registros.length; i++) {
+            if (registros[i].id % 2 != 0) {
+                console.log("Mascota ID impar:", registros[i].id, registros[i].nombre);
+            }
+        }
     }
 }
